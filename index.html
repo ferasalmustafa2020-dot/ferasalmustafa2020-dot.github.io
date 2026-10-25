@@ -1,30 +1,369 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BUNHOUSE Syria | برغر وعصائر وحلويات</title>
+<meta name="description" content="BUNHOUSE Syria - تصفح قائمة البرغر والعصائر والحلويات وجهّز طلبك عبر واتساب.">
+<meta name="theme-color" content="#0a0a0a">
+<style>
+:root{--gold:#d4af37;--gold2:#f3d97a;--bg:#0a0a0a;--card:#151515;--line:#2a2a2a;--txt:#f2f2f2;--mut:#a8a8a8}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{background:var(--bg);color:var(--txt);font-family:Tahoma,"Segoe UI",Arial,sans-serif;line-height:1.7}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+.wrap{max-width:1150px;margin:auto;padding:0 16px}
+section{padding:54px 0}
+h2.t{font-size:1.7rem;color:var(--gold);text-align:center;margin-bottom:8px}
+p.sub{text-align:center;color:var(--mut);margin-bottom:26px}
+.btn{display:inline-block;background:linear-gradient(135deg,var(--gold2),var(--gold));color:#111;font-weight:bold;border:0;border-radius:50px;padding:11px 22px;font-size:1rem;transition:.2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(212,175,55,.35)}
+.btn.out{background:transparent;color:var(--gold);border:1.5px solid var(--gold)}
+.btn.off{background:transparent;color:var(--mut);border:1.5px dashed var(--mut)}
+/* header */
+header{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.hd{display:flex;align-items:center;justify-content:space-between;height:60px;gap:10px}
+.logo{font-weight:900;font-size:1.25rem;color:var(--gold);letter-spacing:1px;white-space:nowrap;direction:ltr}
+nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav a{padding:6px 11px;border-radius:20px;color:var(--mut);font-size:.9rem;white-space:nowrap}
+nav a:hover{color:var(--gold);background:#1a1a1a}
+.cartbtn{position:relative;background:none;border:1.5px solid var(--gold);color:var(--gold);border-radius:50px;padding:6px 14px;font-weight:bold;white-space:nowrap}
+.cartbtn i{font-style:normal;background:var(--gold);color:#111;border-radius:50%;padding:0 7px;margin-right:6px;font-size:.85rem}
+/* hero */
+.hero{min-height:78vh;display:flex;align-items:center;text-align:center;background:radial-gradient(circle at 50% 0%,#2a2210 0%,#0a0a0a 65%)}
+.hero h1{font-size:clamp(2.2rem,8vw,4.2rem);color:var(--gold);direction:ltr;line-height:1.15}
+.hero h1 small{display:block;font-size:.4em;color:var(--txt);letter-spacing:6px}
+.hero p{max-width:560px;margin:16px auto 26px;color:var(--mut);font-size:1.1rem}
+.hero .acts{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+/* search */
+.search{max-width:520px;margin:0 auto 10px}
+.search input{width:100%;padding:13px 20px;border-radius:50px;border:1.5px solid var(--line);background:#111;color:var(--txt);font-size:1rem;outline:none}
+.search input:focus{border-color:var(--gold)}
+#noRes{display:none;text-align:center;color:var(--mut);padding:20px}
+/* cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:.25s}
+.card:hover{transform:translateY(-5px);border-color:var(--gold);box-shadow:0 10px 26px rgba(212,175,55,.15)}
+.ph{position:relative;aspect-ratio:4/3;background:linear-gradient(135deg,#1c1808,#0e0e0e);display:flex;align-items:center;justify-content:center;color:#3d3414;font-weight:900;letter-spacing:3px;font-size:1.3rem}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cb{padding:14px 16px 16px}
+.cb h3{color:var(--gold2);font-size:1.1rem}
+.cb p{color:var(--mut);font-size:.9rem;min-height:44px;margin:4px 0 10px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.row b{color:var(--gold);font-size:1.05rem}
+.row button{background:linear-gradient(135deg,var(--gold2),var(--gold));border:0;color:#111;font-weight:bold;border-radius:50px;padding:8px 14px;font-size:.88rem}
+.row button:active{transform:scale(.95)}
+.tag{display:inline-block;font-size:.72rem;color:#111;background:var(--gold);border-radius:20px;padding:0 9px;margin-bottom:4px}
+/* info boxes */
+.boxes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px}
+.box h3{color:var(--gold);margin-bottom:8px}
+.box p,.box li{color:var(--mut)}
+.box ul{list-style:none}
+.box li{display:flex;justify-content:space-between;border-bottom:1px dashed var(--line);padding:5px 0}
+.alt{background:#0f0f0f;border-block:1px solid var(--line)}
+.contacts{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.note{text-align:center;color:var(--mut);font-size:.85rem;margin-top:14px}
+/* footer */
+footer{background:#050505;border-top:1px solid var(--gold);text-align:center;padding:30px 16px;color:var(--mut);font-size:.9rem}
+footer b{color:var(--gold);direction:ltr;display:inline-block}
+/* floating */
+.fab{position:fixed;z-index:60;border:0;border-radius:50%;width:54px;height:54px;display:flex;align-items:center;justify-content:center;font-weight:bold;box-shadow:0 4px 16px rgba(0,0,0,.6)}
+#waFab{bottom:18px;left:16px;background:#25D366;color:#fff;font-size:.8rem}
+#upFab{bottom:84px;left:16px;background:var(--gold);color:#111;font-size:1.3rem;display:none}
+/* cart */
+#ov{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:90;display:none}
+#cart{position:fixed;top:0;bottom:0;right:0;width:min(440px,100%);background:#101010;border-left:1px solid var(--gold);z-index:100;transform:translateX(100%);transition:.3s;display:flex;flex-direction:column}
+#cart.open{transform:none}
+.ch{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line);color:var(--gold);font-weight:bold;font-size:1.1rem}
+.ch button{background:none;border:0;color:var(--txt);font-size:1.6rem}
+#items{flex:1;overflow-y:auto;padding:10px 18px}
+.it{display:flex;align-items:center;gap:8px;padding:10px 0;border-bottom:1px solid var(--line)}
+.it .n{flex:1;font-size:.95rem}.it .n small{display:block;color:var(--mut)}
+.q{display:flex;align-items:center;gap:6px}
+.q button{width:28px;height:28px;border-radius:50%;border:1px solid var(--gold);background:none;color:var(--gold);font-size:1.1rem;line-height:1}
+.del{background:none;border:0;color:#e5534b;font-size:1.1rem}
+.empty{text-align:center;color:var(--mut);padding:30px 0}
+.cf{padding:12px 18px;border-top:1px solid var(--line);max-height:55vh;overflow-y:auto}
+.cf input,.cf textarea{width:100%;margin-bottom:8px;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:#181818;color:var(--txt);font-family:inherit;font-size:.95rem}
+.cf input:focus,.cf textarea:focus{outline:none;border-color:var(--gold)}
+.tot{display:flex;justify-content:space-between;font-weight:bold;font-size:1.1rem;color:var(--gold);margin:6px 0 10px}
+.cf .btn{width:100%;background:#25D366;color:#fff}
+.err{color:#ff8a80;font-size:.85rem;min-height:18px}
+/* reveal */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s,transform .6s}
+.reveal.in{opacity:1;transform:none}
+@media(max-width:600px){nav{display:none}.grid{grid-template-columns:1fr 1fr;gap:12px}.cb{padding:10px}.cb p{font-size:.8rem;min-height:56px}.row{flex-direction:column;align-items:stretch;text-align:center}}
+@media(max-width:380px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header>
+ <div class="wrap hd">
+  <a href="#top" class="logo">BUNHOUSE 🍔</a>
+  <nav>
+   <a href="#top">الرئيسية</a><a href="#top-sellers">الأكثر طلبًا</a><a href="#burger">البرغر</a><a href="#drinks">المشروبات</a><a href="#desserts">الحلويات</a><a href="#offers">العروض</a><a href="#about">من نحن</a><a href="#contact">تواصل</a>
+  </nav>
+  <button class="cartbtn" id="openCart">السلة<i id="cnt">0</i></button>
+ </div>
+</header>
+
+<main id="top">
+<section class="hero">
+ <div class="wrap reveal">
+  <h1>BUNHOUSE<small>SYRIA</small></h1>
+  <p>أهلًا بك في BUNHOUSE Syria. تصفّح قائمتنا من البرغر والعصائر والحلويات، وجهّز طلبك وأرسله لنا عبر واتساب.</p>
+  <div class="acts">
+   <a href="#burger" class="btn">تصفح القائمة</a>
+   <a data-wa class="btn out" target="_blank" rel="noopener">اطلب عبر واتساب</a>
+  </div>
+ </div>
+</section>
+
+<section style="padding:24px 0 0">
+ <div class="wrap">
+  <div class="search"><input id="q" type="search" placeholder="🔍 ابحث عن وجبة أو مشروب أو حلوى..." autocomplete="off"></div>
+  <div id="noRes">لا توجد نتائج مطابقة لبحثك.</div>
+ </div>
+</section>
+
+<section id="top-sellers" class="sec">
+ <div class="wrap"><h2 class="t">الوجبات الأكثر طلبًا</h2><p class="sub">اختيارات زبائننا المفضلة</p><div class="grid" id="g-top"></div></div>
+</section>
+
+<section id="burger" class="sec alt">
+ <div class="wrap"><h2 class="t">🍔 قائمة البرغر</h2><p class="sub">برغر طازج بنكهات متنوعة</p><div class="grid" id="g-burger"></div></div>
+</section>
+
+<section id="drinks" class="sec">
+ <div class="wrap"><h2 class="t">🥤 العصائر والمشروبات</h2><p class="sub">منعشة وباردة</p><div class="grid" id="g-drinks"></div></div>
+</section>
+
+<section id="desserts" class="sec alt">
+ <div class="wrap"><h2 class="t">🍰 الحلويات</h2><p class="sub">ختام حلو لوجبتك</p><div class="grid" id="g-desserts"></div></div>
+</section>
+
+<section id="offers">
+ <div class="wrap"><h2 class="t">عروض خاصة</h2><p class="sub">اسأل عن عروضنا الحالية عبر واتساب</p>
+  <div class="boxes" id="offerBox"></div>
+ </div>
+</section>
+
+<section id="about" class="alt">
+ <div class="wrap"><h2 class="t">من نحن</h2>
+  <div class="boxes" style="grid-template-columns:1fr"><div class="box reveal"><p id="aboutTxt" style="text-align:center"></p></div></div>
+ </div>
+</section>
+
+<section id="info">
+ <div class="wrap"><h2 class="t">معلومات المطعم</h2><p class="sub">&nbsp;</p>
+  <div class="boxes">
+   <div class="box reveal"><h3>🛵 التوصيل</h3><p id="deliveryTxt"></p></div>
+   <div class="box reveal"><h3>🕒 ساعات العمل</h3><ul id="hoursList"></ul></div>
+   <div class="box reveal"><h3>📍 العنوان</h3><p id="addrTxt"></p></div>
+  </div>
+ </div>
+</section>
+
+<section id="contact" class="alt">
+ <div class="wrap"><h2 class="t">تواصل معنا</h2><p class="sub">نسعد بخدمتك</p>
+  <div class="contacts">
+   <a data-wa class="btn" target="_blank" rel="noopener">اطلب عبر واتساب</a>
+   <a data-tel class="btn out">اتصل بنا</a>
+   <a data-mail class="btn out">راسلنا عبر البريد الإلكتروني</a>
+   <a data-ig class="btn out" target="_blank" rel="noopener">تابعنا على إنستغرام</a>
+   <a data-fb class="btn out" target="_blank" rel="noopener">فيسبوك</a>
+  </div>
+  <p class="note" id="contactNote"></p>
+ </div>
+</section>
+</main>
+
+<footer>
+ <b>BUNHOUSE Syria</b>
+ <p style="margin:6px 0">جميع الحقوق محفوظة © <span id="yr"></span></p>
+ <p><a data-tel style="color:var(--gold)" dir="ltr"></a> · <a data-mail style="color:var(--gold)">البريد الإلكتروني</a> · <a data-ig style="color:var(--gold)" target="_blank" rel="noopener">إنستغرام</a></p>
+</footer>
+
+<a class="fab" id="waFab" data-wa target="_blank" rel="noopener" aria-label="واتساب">واتساب</a>
+<button class="fab" id="upFab" aria-label="العودة للأعلى">↑</button>
+
+<div id="ov"></div>
+<aside id="cart" aria-label="سلة المشتريات">
+ <div class="ch"><span>🛒 سلة المشتريات</span><button id="closeCart" aria-label="إغلاق">×</button></div>
+ <div id="items"></div>
+ <div class="cf">
+  <div class="tot"><span>الإجمالي</span><span id="total">0</span></div>
+  <input id="cName" placeholder="الاسم" autocomplete="name">
+  <input id="cPhone" type="tel" placeholder="رقم الهاتف" autocomplete="tel">
+  <input id="cAddr" placeholder="عنوان التوصيل" autocomplete="street-address">
+  <textarea id="cNote" rows="2" placeholder="ملاحظات (اختياري)"></textarea>
+  <div class="err" id="err"></div>
+  <button class="btn" id="send">إرسال الطلب عبر واتساب</button>
+  <p class="note">سيفتح واتساب برسالة جاهزة. لا يُعتبر الطلب مرسلًا إلا بعد أن تضغط «إرسال» داخل واتساب.</p>
+ </div>
+</aside>
+
+<script>
+/* ===== إعدادات المطعم: عدّل هنا فقط ===== */
+const CONFIG = {
+  name: "BUNHOUSE Syria",
+  whatsapp: "213699750743",              // رقم واتساب بدون + وبدون أصفار
+  phoneDisplay: "00213699750743",        // الرقم الظاهر للزوار
+  email: "Ferasalmustafa2020@gmail.com",
+  instagram: "https://www.instagram.com/feras.almustafa/",   // حساب إنستغرام: feras.almustafa
+  facebook: "",                          // ضع رابط صفحة فيسبوك هنا، مثال: "https://www.facebook.com/اسم-الصفحة"
+  address: "بيت جيرانا",                 // عنوان المطعم
+  currency: "دينار",
+  about: "BUNHOUSE Syria مطعم يقدّم البرغر والعصائر والحلويات. تصفّح القائمة، أضف ما يعجبك إلى السلة، وأرسل طلبك مباشرة عبر واتساب.",
+  delivery: "للاستفسار عن التوصيل ومناطقه وأسعاره، تواصل معنا عبر واتساب قبل تأكيد طلبك.",
+  hours: [                               // عدّل الأيام والساعات
+    ["السبت – الخميس", "من 12 مساءً حتى 12 صباحًا"],
+    ["الجمعة", "عطلة"]
+  ],
+  offers: [                              // أضف أو احذف العروض
+    {title: "عرض مميز", text: "اكتب تفاصيل عرضك الأول هنا."},
+    {title: "وجبة العائلة", text: "اكتب تفاصيل عرضك الثاني هنا."}
+  ]
+};
+
+/* ===== المنتجات: الأسعار أدناه مؤقتة، عدّلها (price) =====
+   الصور: ضع الملفات داخل مجلد images في المستودع وغيّر الاسم في img إن لزم.
+   إذا لم توجد الصورة يظهر مكانها إطار ذهبي أنيق بدل أن ينكسر الموقع. */
 const PRODUCTS = [
- // 🍔 البرغر
- {id:"b1",cat:"burger",name:"كلاسيك برغر",desc:"قطعة لحم مشوية مع الخس والطماطم وصوص البيت.",price:700,img:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80",top:true},
- {id:"b2",cat:"burger",name:"تشيز برغر",desc:"لحم مشوي مع شريحة جبنة ذائبة.",price:750,img:"https://images.unsplash.com/photo-1553979459-d2229ba7433a?auto=format&fit=crop&w=800&q=80",top:true},
- {id:"b3",cat:"burger",name:"دبل تشيز برغر",desc:"قطعتا لحم مع جبنة مضاعفة.",price:900,img:"https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=800&q=80"},
- {id:"b4",cat:"burger",name:"تشيكن برغر",desc:"صدر دجاج مشوي مع الخضار والصوص.",price:720,img:"https://images.unsplash.com/photo-1606755962773-d324e0a13086?auto=format&fit=crop&w=800&q=80"},
- {id:"b5",cat:"burger",name:"كرسبي تشيكن",desc:"دجاج مقرمش مع الخس والصوص.",price:760,img:"https://images.unsplash.com/photo-1606755962773-d324e0a13086?auto=format&fit=crop&w=800&q=80",top:true},
- {id:"b6",cat:"burger",name:"سبايسي برغر",desc:"برغر حار لعشاق النكهة القوية.",price:780,img:"https://images.unsplash.com/photo-1553979459-d2229ba7433a?auto=format&fit=crop&w=800&q=80"},
- {id:"b7",cat:"burger",name:"ميغا برغر",desc:"الحجم الكبير لمن يحب الوجبة الدسمة.",price:1000,img:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80"},
- {id:"b8",cat:"burger",name:"وجبة برغر مع بطاطا ومشروب",desc:"برغر من اختيارك مع بطاطا ومشروب.",price:1000,img:"https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=800&q=80"},
-
- // 🥤 العصائر والمشروبات
- {id:"d1",cat:"drinks",name:"عصير البرتقال",desc:"برتقال طبيعي منعش.",price:200,img:"https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&w=800&q=80"},
- {id:"d2",cat:"drinks",name:"ليمون ونعناع",desc:"ليمون طازج مع النعناع وثلج.",price:220,img:"https://images.unsplash.com/photo-1513558161293-cdaf765edfd7?auto=format&fit=crop&w=800&q=80",top:true},
- {id:"d3",cat:"drinks",name:"عصير الفراولة",desc:"فراولة طازجة مخفوقة.",price:250,img:"https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=800&q=80"},
- {id:"d4",cat:"drinks",name:"عصير المانجو",desc:"مانجو ناضجة وكثيفة القوام.",price:250,img:"https://images.unsplash.com/photo-1546173159-315724a31696?auto=format&fit=crop&w=800&q=80"},
- {id:"d5",cat:"drinks",name:"كوكتيل الفواكه",desc:"مزيج من الفواكه الطازجة.",price:280,img:"https://images.unsplash.com/photo-1497534446932-c925b458314e?auto=format&fit=crop&w=800&q=80"},
- {id:"d6",cat:"drinks",name:"ميلك شيك شوكولاتة",desc:"ميلك شيك كريمي بالشوكولاتة.",price:300,img:"https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",top:true},
- {id:"d7",cat:"drinks",name:"مشروبات غازية",desc:"مشروب غازي بارد.",price:200,img:"https://images.unsplash.com/photo-1581636625402-29b2a704ef13?auto=format&fit=crop&w=800&q=80"},
- {id:"d8",cat:"drinks",name:"مياه معدنية",desc:"مياه معدنية باردة.",price:200,img:"https://images.unsplash.com/photo-1523362628745-0c100150b504?auto=format&fit=crop&w=800&q=80"},
-
- // 🍰 الحلويات
- {id:"s1",cat:"desserts",name:"براونيز الشوكولاتة",desc:"براوني غني بالشوكولاتة الداكنة.",price:300,img:"https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=800&q=80",top:true},
- {id:"s2",cat:"desserts",name:"تشيز كيك",desc:"قطعة تشيز كيك ناعمة وكريمية.",price:350,img:"https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=800&q=80"},
- {id:"s3",cat:"desserts",name:"وافل بالشوكولاتة",desc:"وافل ساخن مع صوص الشوكولاتة.",price:320,img:"https://images.unsplash.com/photo-1562376552-0d160a2f238d?auto=format&fit=crop&w=800&q=80"},
- {id:"s4",cat:"desserts",name:"كريب بالشوكولاتة",desc:"كريب رقيق محشو بالشوكولاتة.",price:320,img:"https://images.unsplash.com/photo-1519676867240-f03562e64548?auto=format&fit=crop&w=800&q=80"},
- {id:"s5",cat:"desserts",name:"آيس كريم",desc:"كرات آيس كريم بنكهات متنوعة.",price:300,img:"https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=800&q=80"},
- {id:"s6",cat:"desserts",name:"مولتن كيك",desc:"كيك دافئ بقلب شوكولاتة سائل.",price:380,img:"https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80"},
- {id:"s7",cat:"desserts",name:"دونات",desc:"دونات طري مع التغطية.",price:300,img:"https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=800&q=80"}
+ // البرغر
+ {id:"b1",cat:"burger",name:"كلاسيك برغر",desc:"قطعة لحم مشوية مع الخس والطماطم وصوص البيت.",price:700,img:"images/burger-1.jpg",top:true},
+ {id:"b2",cat:"burger",name:"تشيز برغر",desc:"لحم مشوي مع شريحة جبنة ذائبة.",price:750,img:"images/burger-2.jpg",top:true},
+ {id:"b3",cat:"burger",name:"دبل تشيز برغر",desc:"قطعتا لحم مع جبنة مضاعفة.",price:900,img:"images/burger-1.jpg"},
+ {id:"b4",cat:"burger",name:"تشيكن برغر",desc:"صدر دجاج مشوي مع الخضار والصوص.",price:720,img:"images/burger-2.jpg"},
+ {id:"b5",cat:"burger",name:"كرسبي تشيكن",desc:"دجاج مقرمش مع الخس والصوص.",price:760,img:"images/burger-1.jpg",top:true},
+ {id:"b6",cat:"burger",name:"سبايسي برغر",desc:"برغر حار لعشاق النكهة القوية.",price:780,img:"images/burger-2.jpg"},
+ {id:"b7",cat:"burger",name:"ميغا برغر",desc:"الحجم الكبير لمن يحب الوجبة الدسمة.",price:1000,img:"images/burger-1.jpg"},
+ {id:"b8",cat:"burger",name:"وجبة برغر مع بطاطا ومشروب",desc:"برغر من اختيارك مع بطاطا ومشروب.",price:1000,img:"images/burger-2.jpg"},
+ // المشروبات
+ {id:"d1",cat:"drinks",name:"عصير البرتقال",desc:"برتقال طبيعي منعش.",price:200,img:"images/orange-juice.jpg"},
+ {id:"d2",cat:"drinks",name:"ليمون ونعناع",desc:"ليمون طازج مع النعناع وثلج.",price:220,img:"images/lemon-mint.jpg",top:true},
+ {id:"d3",cat:"drinks",name:"عصير الفراولة",desc:"فراولة طازجة مخفوقة.",price:250,img:"images/strawberry-juice.jpg"},
+ {id:"d4",cat:"drinks",name:"عصير المانجو",desc:"مانجو ناضجة وكثيفة القوام.",price:250,img:"images/mango-juice.jpg"},
+ {id:"d5",cat:"drinks",name:"كوكتيل الفواكه",desc:"مزيج من الفواكه الطازجة.",price:280,img:"images/fruit-cocktail.jpg"},
+ {id:"d6",cat:"drinks",name:"ميلك شيك شوكولاتة",desc:"ميلك شيك كريمي بالشوكولاتة.",price:300,img:"images/milkshake.jpg",top:true},
+ {id:"d7",cat:"drinks",name:"مشروبات غازية",desc:"مشروب غازي بارد.",price:200,img:"images/soft-drinks.jpg"},
+ {id:"d8",cat:"drinks",name:"مياه معدنية",desc:"مياه معدنية باردة.",price:200,img:"images/water.jpg"},
+ // الحلويات
+ {id:"s1",cat:"desserts",name:"براونيز الشوكولاتة",desc:"براوني غني بالشوكولاتة الداكنة.",price:300,img:"images/brownies.jpg",top:true},
+ {id:"s2",cat:"desserts",name:"تشيز كيك",desc:"قطعة تشيز كيك ناعمة وكريمية.",price:350,img:"images/cheesecake.jpg"},
+ {id:"s3",cat:"desserts",name:"وافل بالشوكولاتة",desc:"وافل ساخن مع صوص الشوكولاتة.",price:320,img:"images/waffle.jpg"},
+ {id:"s4",cat:"desserts",name:"كريب بالشوكولاتة",desc:"كريب رقيق محشو بالشوكولاتة.",price:320,img:"images/crepe.jpg"},
+ {id:"s5",cat:"desserts",name:"آيس كريم",desc:"كرات آيس كريم بنكهات متنوعة.",price:300,img:"images/ice-cream.jpg"},
+ {id:"s6",cat:"desserts",name:"مولتن كيك",desc:"كيك دافئ بقلب شوكولاتة سائل.",price:380,img:"images/molten-cake.jpg"},
+ {id:"s7",cat:"desserts",name:"دونات",desc:"دونات طري مع التغطية.",price:300,img:"images/donut.jpg"}
 ];
+
+/* ===== الكود ===== */
+const $ = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
+const fmt = n => n.toLocaleString("en-US") + " " + CONFIG.currency;
+const cart = {};
+
+function card(p){
+  return `<article class="card reveal" data-name="${p.name} ${p.desc}">
+    <div class="ph"><span>BUNHOUSE</span><img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.remove()"></div>
+    <div class="cb">${p.top?'<span class="tag">الأكثر طلبًا</span>':''}<h3>${p.name}</h3><p>${p.desc}</p>
+    <div class="row"><b>${fmt(p.price)}</b><button data-add="${p.id}">أضف إلى السلة</button></div></div></article>`;
+}
+function renderMenu(){
+  ["burger","drinks","desserts"].forEach(c=>{
+    $("#g-"+c).innerHTML = PRODUCTS.filter(p=>p.cat===c).map(card).join("");
+  });
+  $("#g-top").innerHTML = PRODUCTS.filter(p=>p.top).map(card).join("");
+}
+function setupInfo(){
+  const wa = "https://wa.me/" + CONFIG.whatsapp;
+  $$("[data-wa]").forEach(a=>a.href = wa + "?text=" + encodeURIComponent("مرحبًا BUNHOUSE Syria، أريد الاستفسار/الطلب."));
+  $$("[data-tel]").forEach(a=>{a.href = "tel:+" + CONFIG.whatsapp; if(a.closest("footer")) a.textContent = CONFIG.phoneDisplay;});
+  $$("[data-mail]").forEach(a=>a.href = "mailto:" + CONFIG.email);
+  $$("[data-ig]").forEach(a=>a.href = CONFIG.instagram);
+  const fb = $("[data-fb]");
+  if(CONFIG.facebook){fb.href = CONFIG.facebook;}
+  else{fb.className = "btn off"; fb.textContent = "فيسبوك (أضف الرابط في CONFIG.facebook)"; fb.removeAttribute("target");}
+  $("#aboutTxt").textContent = CONFIG.about;
+  $("#deliveryTxt").textContent = CONFIG.delivery;
+  $("#addrTxt").textContent = CONFIG.address || "سيُضاف عنوان المطعم قريبًا.";
+  $("#hoursList").innerHTML = CONFIG.hours.map(h=>`<li><span>${h[0]}</span><span>${h[1]}</span></li>`).join("");
+  $("#offerBox").innerHTML = CONFIG.offers.map(o=>`<div class="box reveal"><h3>${o.title}</h3><p>${o.text}</p></div>`).join("");
+  $("#contactNote").textContent = "الهاتف وواتساب: " + CONFIG.phoneDisplay;
+  $("#yr").textContent = new Date().getFullYear();
+}
+
+/* السلة */
+function renderCart(){
+  const ids = Object.keys(cart);
+  let total = 0, count = 0;
+  $("#items").innerHTML = ids.length ? ids.map(id=>{
+    const p = PRODUCTS.find(x=>x.id===id), q = cart[id];
+    total += p.price*q; count += q;
+    return `<div class="it"><div class="n">${p.name}<small>${fmt(p.price)} × ${q} = ${fmt(p.price*q)}</small></div>
+      <div class="q"><button data-dec="${id}">−</button><b>${q}</b><button data-inc="${id}">+</button></div>
+      <button class="del" data-del="${id}" aria-label="حذف">🗑</button></div>`;
+  }).join("") : '<div class="empty">سلتك فارغة. أضف بعض الوجبات.</div>';
+  $("#total").textContent = fmt(total);
+  $("#cnt").textContent = count;
+}
+function openCart(o){
+  $("#cart").classList.toggle("open", o);
+  $("#ov").style.display = o ? "block" : "none";
+}
+document.addEventListener("click", e=>{
+  const t = e.target;
+  if(t.dataset.add){cart[t.dataset.add] = (cart[t.dataset.add]||0)+1; renderCart(); t.textContent="تمت الإضافة ✓"; setTimeout(()=>t.textContent="أضف إلى السلة",900);}
+  if(t.dataset.inc){cart[t.dataset.inc]++; renderCart();}
+  if(t.dataset.dec){cart[t.dataset.dec]--; if(cart[t.dataset.dec]<=0) delete cart[t.dataset.dec]; renderCart();}
+  if(t.dataset.del){delete cart[t.dataset.del]; renderCart();}
+});
+$("#openCart").onclick = ()=>openCart(true);
+$("#closeCart").onclick = $("#ov").onclick = ()=>openCart(false);
+
+$("#send").onclick = ()=>{
+  const ids = Object.keys(cart), err = $("#err");
+  const name = $("#cName").value.trim(), phone = $("#cPhone").value.trim(), addr = $("#cAddr").value.trim(), note = $("#cNote").value.trim();
+  if(!ids.length){err.textContent = "السلة فارغة."; return;}
+  if(!name || !phone || !addr){err.textContent = "يرجى إدخال الاسم ورقم الهاتف وعنوان التوصيل."; return;}
+  err.textContent = "";
+  let total = 0;
+  const lines = ids.map(id=>{const p = PRODUCTS.find(x=>x.id===id); total += p.price*cart[id]; return `• ${p.name} × ${cart[id]} = ${fmt(p.price*cart[id])}`;});
+  const msg = `طلب جديد من ${CONFIG.name}\n\n${lines.join("\n")}\n\nالإجمالي: ${fmt(total)}\n\nالاسم: ${name}\nالهاتف: ${phone}\nالعنوان: ${addr}` + (note ? `\nملاحظات: ${note}` : "");
+  window.open("https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(msg), "_blank");
+};
+
+/* البحث */
+$("#q").addEventListener("input", e=>{
+  const v = e.target.value.trim().toLowerCase();
+  let any = false;
+  $$(".card").forEach(c=>{
+    const ok = !v || c.dataset.name.toLowerCase().includes(v);
+    c.style.display = ok ? "" : "none";
+    if(ok) any = true;
+  });
+  $$("section.sec").forEach(s=>{
+    s.style.display = (!v || [...s.querySelectorAll(".card")].some(c=>c.style.display!=="none")) ? "" : "none";
+  });
+  $("#noRes").style.display = any ? "none" : "block";
+});
+
+/* العودة للأعلى + الحركة */
+const up = $("#upFab");
+window.addEventListener("scroll", ()=>{up.style.display = scrollY > 500 ? "flex" : "none";});
+up.onclick = ()=>scrollTo({top:0,behavior:"smooth"});
+function observe(){
+  if(!("IntersectionObserver" in window)){$$(".reveal").forEach(x=>x.classList.add("in")); return;}
+  const io = new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add("in"); io.unobserve(x.target);}}),{threshold:.1});
+  $$(".reveal").forEach(x=>io.observe(x));
+}
+
+renderMenu(); setupInfo(); renderCart(); observe();
+</script>
+</body>
+</html>
